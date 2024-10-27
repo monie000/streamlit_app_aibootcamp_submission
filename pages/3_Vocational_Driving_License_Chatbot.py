@@ -16,9 +16,12 @@ from helper_functions.utility import check_password
 # Check if the password is correct.  
 if not check_password():  
     st.stop()
-    
-load_dotenv('.env')
-openai_api_key = os.getenv('OPENAI_API_KEY')
+
+if load_dotenv('.env'):
+   # for local development
+   OPENAI_KEY = os.getenv('OPENAI_API_KEY')
+else:
+   OPENAI_KEY = st.secrets['OPENAI_API_KEY']
 
 urls = ["https://onemotoring.lta.gov.sg/content/onemotoring/home/driving/vocational_licence/vocational_licence_application.html",
         "https://www.gobusiness.gov.sg/browse-all-licences/land-transport-authority-(lta)/taxi-driver's-vocational-licence-(tdvl)---private-hire-car-driver's-vocational-licence-(pdvl)",

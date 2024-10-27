@@ -17,8 +17,11 @@ from helper_functions.utility import check_password
 if not check_password():  
     st.stop()
 
-load_dotenv('.env')
-openai_api_key = os.getenv('OPENAI_API_KEY')
+if load_dotenv('.env'):
+   # for local development
+   OPENAI_KEY = os.getenv('OPENAI_API_KEY')
+else:
+   OPENAI_KEY = st.secrets['OPENAI_API_KEY']
 
 urls = ["https://www.motorist.sg/article/534/2024-update-traffic-offences-in-singapore-that-carry-demerit-points-composition-fines",
         "https://www.police.gov.sg/Advisories/Traffic/Traffic-Matters/Driver-Improvement-Points-System",
