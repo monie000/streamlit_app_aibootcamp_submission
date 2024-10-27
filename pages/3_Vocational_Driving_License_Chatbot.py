@@ -19,9 +19,9 @@ if not check_password():
 
 if load_dotenv('.env'):
    # for local development
-   OPENAI_KEY = os.getenv('OPENAI_API_KEY')
+   openai_api_key = os.getenv('OPENAI_API_KEY')
 else:
-   OPENAI_KEY = st.secrets['OPENAI_API_KEY']
+   openai_api_key = st.secrets['OPENAI_API_KEY']
 
 urls = ["https://onemotoring.lta.gov.sg/content/onemotoring/home/driving/vocational_licence/vocational_licence_application.html",
         "https://www.gobusiness.gov.sg/browse-all-licences/land-transport-authority-(lta)/taxi-driver's-vocational-licence-(tdvl)---private-hire-car-driver's-vocational-licence-(pdvl)",
@@ -39,9 +39,9 @@ for url in urls:
     clean_text = soup.text.replace('\n', '')
     final_text = final_text + clean_text
 
-with st.sidebar:
-    load_dotenv('.env')
-    openai_api_key = os.getenv('OPENAI_API_KEY')
+#with st.sidebar:
+    #load_dotenv('.env')
+    #openai_api_key = os.getenv('OPENAI_API_KEY')
 
 st.title("🔎 Singapore Vocational Driving License Application Chatbot")
 

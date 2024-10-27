@@ -19,9 +19,9 @@ if not check_password():
 
 if load_dotenv('.env'):
    # for local development
-   OPENAI_KEY = os.getenv('OPENAI_API_KEY')
+   openai_api_key = os.getenv('OPENAI_API_KEY')
 else:
-   OPENAI_KEY = st.secrets['OPENAI_API_KEY']
+   openai_api_key = st.secrets['OPENAI_API_KEY']
 
 urls = ["https://www.motorist.sg/article/534/2024-update-traffic-offences-in-singapore-that-carry-demerit-points-composition-fines",
         "https://www.police.gov.sg/Advisories/Traffic/Traffic-Matters/Driver-Improvement-Points-System",
@@ -37,9 +37,9 @@ for url in urls:
     final_text = final_text + clean_text
 
 
-with st.sidebar:
-    load_dotenv('.env')
-    openai_api_key = os.getenv('OPENAI_API_KEY')
+#with st.sidebar:
+    #load_dotenv('.env')
+    #openai_api_key = os.getenv('OPENAI_API_KEY')
 
 st.title("🔎 Singapore Traffic Offences with Demerit Point Chatbot")
 
